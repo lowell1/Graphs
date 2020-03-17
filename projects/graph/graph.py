@@ -162,13 +162,6 @@ class Graph:
 
         This should be done using recursion.
         """
-
-        # add cur_vert_id to visited
-
-        #append cur_vert_id to path
-
-        #if at dest return path
-
         visited.add(cur_vert_id)
         path = path + [cur_vert_id]
         print(path)
@@ -184,38 +177,6 @@ class Graph:
                     return new_path
 
         return None
-
-    # def dfs_recursive(self, cur_vert_id, dest_vert_id, prev = {}, visited = []):
-        """
-        Return a list containing a path from
-        starting_vertex to destination_vertex in
-        depth-first order.
-
-        This should be done using recursion.
-        """
-
-
-        # for vert_nbr_id in self.vertices[cur_vert_id]:
-        #     print(vert_nbr_id)
-        #     if vert_nbr_id not in visited:
-        #         visited.append(vert_nbr_id)
-        #         prev[vert_nbr_id] = cur_vert_id
-        #         self.dfs_recursive(vert_nbr_id, dest_vert_id, prev, visited)
-
-        # if cur_vert_id == dest_vert_id:
-        #     print("prev = ",prev)
-        #     path = []
-        #     vert_id = dest_vert_id
-
-
-        #     while vert_id in prev:
-        #         path.append(vert_id)
-        #         vert_id = prev[vert_id]
-        #         print("path = ", path)
-
-        #     return [cur_vert_id] + [x for x in path[::-1]]
-        # else:
-        #     return (prev, visited)
 
 
 if __name__ == '__main__':
