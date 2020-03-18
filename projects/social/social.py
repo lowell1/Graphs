@@ -1,3 +1,6 @@
+from random import random
+import math
+
 class User:
     def __init__(self, name):
         self.name = name
@@ -28,6 +31,10 @@ class SocialGraph:
         self.users[self.last_id] = User(name)
         self.friendships[self.last_id] = set()
 
+    def random_number(self, max):
+        log = math.log(max, 10)
+        return int(random() * math.pow(10,log + 1) % max + 1)
+
     def populate_graph(self, num_users, avg_friendships):
         """
         Takes a number of users and an average number of friendships
@@ -45,8 +52,19 @@ class SocialGraph:
         # !!!! IMPLEMENT ME
 
         # Add users
+        for user_id in range(1, num_users + 1):
+            self.add_user(f"user{user_id}")
 
         # Create friendships
+        max_friends = int(avg_friendships * num_users / 2)
+        for count in range(max_friends):
+            rnd1 = self.random_number(num_users)
+            rnd2 = rnd1
+
+            while rnd2 == rnd1 or rnd2 in self.friendships[rnd1]:
+                rnd2 = self.random_number(num_users)
+
+            self.add_friendship(rnd1, rnd2)
 
     def get_all_social_paths(self, user_id):
         """
